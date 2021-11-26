@@ -11,10 +11,10 @@ endef
 # Variables a resultados
 
 xlsxIgPosicionTrampas10May2020 = \
-	tests/data/IG_POSICION_TRAMPAS_10MAY2020.xlsx
+	tests/data/datos_formato_excel/IG_POSICION_TRAMPAS_10MAY2020.xlsx
 
 csvIgPosicionTrampas10May2020 = \
-	tests/data/IG_POSICION_TRAMPAS_10MAY2020.csv
+	tests/data/datos_formato_csv/IG_POSICION_TRAMPAS_10MAY2020.csv
 
 csvRepeatedDataTest = \
 	tests/data/repeated_data_test.csv
@@ -74,7 +74,7 @@ $(csv_PosicionTrampasGatosDatapackage): $(csvIgPosicionTrampas10May2020) src/cha
 	mkdir --parents $(@D)
 	src/change_header $< > $@
 
-$(csvRepeatedDataTest): $(xlsxIgPosicionTrampas10May2020) src/distinct_position_traps
+$(csvRepeatedDataTest): $(csvIgPosicionTrampas10May2020) src/distinct_position_traps
 	mkdir --parents $(@D)
 	src/distinct_position_traps $< > $@
 
@@ -116,16 +116,17 @@ check:
 	flake8 --max-line-length 100 tests
 
 clean:
+	rm --force --recursive **/__pycache__
 	rm --force --recursive data/raw/*ISO8601.csv
-	rm --force tests/data/*.csv
-	rm --force tests/data/*.tmp
 	rm --force --recursive data/validacion_datapackage/processed
 	rm --force --recursive reports/tables
 	rm --force --recursive tests/**/__pycache__
-	rm --force --recursive **/__pycache__
 	rm --force *.tmp
 	rm --force data/validacion_datapackage/*.csv
 	rm --force diferenciasMorfometriaPosicionTrampas_1.0.tar.gz
+	rm --force tests/data/*.csv
+	rm --force tests/data/*.tmp
+	rm --force tests/data/datos_formato_excel/*.csv
 
 module = date_interval_tools
 codecov_token = 17875b5e-e175-46f0-b473-ba3fcfe79c6e
@@ -161,5 +162,5 @@ tests: install tests_data $(csvRepeatedDataTest)
 	pytest --verbose tests/pytest/
 	R -e "testthat::test_dir('tests/testthat/', report = 'summary', stop_on_failure = TRUE)"
 
-tests_data: $(xlsxIgPosicionTrampas10May2020)
+tests_data: $(csvIgPosicionTrampas10May2020)
 	./src/distinct_position_traps $<

@@ -10,5 +10,5 @@ def test_check_columns_name():
 
 
 def set_check_columns_name():
-    bash_command = "src/make_check_header.R --data tests/data/IG_POSICION_TRAMPAS_10MAY2020.csv > tests/data/check_header_test.csv"
+    bash_command = "src/make_check_header.R --data tests/data/datos_formato_csv/IG_POSICION_TRAMPAS_10MAY2020.csv > tests/data/check_header_test.csv"
     subprocess.getoutput(bash_command)

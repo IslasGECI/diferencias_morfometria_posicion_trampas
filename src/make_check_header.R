@@ -23,7 +23,7 @@ input_file <- options$data
 data <- readr::read_csv(input_file)
 table <- diferenciasMorfometriaPosicionTrampas::check_columns_name(data)
 if (all(table$es_correcto)) {
-  print("La cabecera es correcta")
+  print("LA CABECERA ES CORRECTA")
 } else {
   print(table)
 }

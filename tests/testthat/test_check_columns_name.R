@@ -5,7 +5,7 @@ library(reshape2)
 
 archivo_salida <- "../data_tests/column_name_data_test.csv"
 salida_test <- tibble::as_tibble(readr::read_csv(archivo_salida))
-archivo_prueba <- "../data/IG_POSICION_TRAMPAS_10MAY2020.csv"
+archivo_prueba <- "../data/datos_formato_csv/IG_POSICION_TRAMPAS_10MAY2020.csv"
 datos_prueba <- readr::read_csv(archivo_prueba)
 obtained <- diferenciasMorfometriaPosicionTrampas::check_columns_name(datos_prueba)
 nrow_obtained <- nrow(obtained)

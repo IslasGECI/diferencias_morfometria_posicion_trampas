@@ -1,35 +1,47 @@
 #!/usr/bin/env bash
 #
+#  Archivo de posición trampas
 position_trap_file_name_xlsx=${1}
 files_path=$(dirname ${position_trap_file_name_xlsx})
 position_trap_file_name=$(basename ${position_trap_file_name_xlsx} .xlsx)
 position_trap_data_file=${files_path}/${position_trap_file_name}
+position_trap_cutted_data=${position_trap_data_file}_clean
+
+# Archivo de morfometría
 cat_morphometry_file_name_xlsx=${2}
 cat_morphometry_data_path=$(dirname ${cat_morphometry_file_name_xlsx})
 cat_morphometry_file_name=$(basename ${cat_morphometry_file_name_xlsx} .xlsx)
 cat_morphometry_data_file=${cat_morphometry_data_path}/${cat_morphometry_file_name}
+
+# Archivo datapackage.json
 datapackage_validation_file="posicion_trampas_gatos_ig"
 dtp_src="data/validacion_datapackage"
+
 src_path="src"
 mkdir -p ${files_path}/errores
 errors_directory=${files_path}/errores
 
 # Revisión estructural de la tabla posición trampa
 # 1. Convertir archivos XLSX a CSV
+	./src/xlsx_2_csv ${position_trap_file_name_xlsx}
+
+# 2. Selecciona solamente columnas necesarias
+	./src/select_needed_columns.sh ${position_trap_data_file}.csv > ${position_trap_cutted_data}.csv
+
 # 2. Encontrar duplicados
 	echo "BUSCANDO DUPLICADOS"
-	${src_path}/distinct_position_traps ${position_trap_file_name_xlsx} > ${errors_directory}/duplicados_${position_trap_file_name}.csv
+	${src_path}/distinct_position_traps ${position_trap_cutted_data}.csv > ${errors_directory}/duplicados_${position_trap_file_name}.csv
 
 # 3. Revisar nombres de las columnas
 	echo "REVISANDO EL ENCABEZADO"
-	${src_path}/make_check_header.R --data ${position_trap_data_file}.csv
+	${src_path}/make_check_header.R --data ${position_trap_cutted_data}.csv
 
 # 3.1 Revisar intervalo de fechas
 	python -m src.check_date_interval --input "${files_path}" --input "${position_trap_file_name}"
 
 # 4. Validacion con datapackage
 	#Cambiamos el encabezado del archivo CSV para correr en la carpeta 'validacion_datapackage' el goodtables
-	${src_path}/change_header ${position_trap_data_file}.csv \
+	${src_path}/change_header ${position_trap_cutted_data}.csv \
 		> ${dtp_src}/${datapackage_validation_file}.csv
 	# Corre goodtables en la carpeta 'validacion_datapackage'
 	echo "VERIFICACIÓN ESTRUCTURAL"
@@ -39,7 +51,7 @@ errors_directory=${files_path}/errores
 # 5. Hacerlos tidy (feature/agrega_script_con_cli)
 	echo "CONVIERTE TABLA A FORMATO TIDY Y CAMBIA FORMATO DE FECHA"
 	src/make_table_tidy.R \
-		--data ${position_trap_data_file}.csv \
+		--data ${position_trap_cutted_data}.csv \
 		--salida ${position_trap_data_file}_tidy.csv \
 	&& cambia_formato_fecha ${position_trap_data_file}_tidy.csv \
 		> ${position_trap_data_file}_ISO8601.csv
@@ -77,3 +89,5 @@ errors_directory=${files_path}/errores
 		--data_1=${files_path}/cleaned_morphometry_cats.csv \
 		--data_2=${files_path}/cleaned_position_traps.csv \
 		> ${errors_directory}/missing_captures_in_position.csv
+
+	echo "🧐 El resultado de esta verificación los podemos ver a detalle en la carpeta \`errores\` que se genera dentro de nuestra carpeta de datos 🗃️"

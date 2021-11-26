@@ -4,8 +4,8 @@
 # El archivo de entrada es .xlsx y se obtiene un .csv con los ID duplicados
 data_file=${1}
 src_path=$(dirname "${data_file}")
-table_name=$(basename "${data_file}" .xlsx)
-./src/xlsx_2_csv ${data_file}
+table_name=$(basename "${data_file}" .csv)
+
 csvsql --snifflimit 0 --no-inference --blanks --query "
   SELECT *
   FROM ${table_name}
