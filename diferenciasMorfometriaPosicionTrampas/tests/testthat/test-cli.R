@@ -7,8 +7,8 @@ describe("Test cli for write_type_of_traps", {
     testtools::if_exist_remove(output_path)
     write_type_of_traps(options)
     expect_true(testtools::exist_output_file(output_path))
-    testtools::if_exist_remove(output_path)
-  })
+    print(readr::read_csv(output_path))
+    # testtools::if_exist_remove(output_path)  })
 })
 
 describe("Cli command for traps last check", {
