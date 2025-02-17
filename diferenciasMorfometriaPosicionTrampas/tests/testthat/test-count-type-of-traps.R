@@ -8,9 +8,9 @@ describe("🪙 Count active traps by type on certain period", {
   data <- tibble::tibble(
     "ID_de_trampa" = c("TC-01-001-NA", "TP-01-001-NA", "TC-02-002-NA"),
     "Estado_trampa" = "A",
-    "Fecha" = c("01/Ene/2025", "31/Ene/2025", "31/Ene/2025"),
+    "Fecha" = c("2025-01-01", "2025-01-31", "2025-01-31"),
   )
-  cut_date <- "15/Ene/2025"
+  cut_date <- "2025-01-15"
   it("count_active_traps_after_date()", {
     obtained <- count_active_traps_after_date(data, cut_date)
     expected_number_of_TC <- 1
@@ -27,14 +27,14 @@ describe("Count active traps by type", {
   data <- tibble::tibble(
     "ID_de_trampa" = c("TC-01-001-NA", "TC-01-001-NA", "TP-01-001-NA", "TC-02-002-NA"),
     "Estado_trampa" = "A",
-    "Fecha" = c("31/Ene/2025", "01/Feb/2025", "31/Ene/2025", "31/Ene/2025"),
+    "Fecha" = c("2025-01-31", "2025-02-01", "2025-01-31", "2025-01-31"),
   )
   obtained <- count_active_traps(data)
 
   data_2 <- tibble::tibble(
     "ID_de_trampa" = c("TC-01-001-NA", "TP-01-001-NA", "TP-02-002-NA"),
     "Estado_trampa" = c("A", "D", "A"),
-    "Fecha" = c("31/Ene/2025", "31/Ene/2025", "31/Ene/2025"),
+    "Fecha" = c("2025-01-31", "2025-01-31", "2025-01-31"),
   )
   obtained_2 <- count_active_traps(data_2)
   it("count_active_traps(): type TC", {
@@ -56,13 +56,13 @@ describe("add_type_column()", {
     data <- tibble::tibble(
       "ID_de_trampa" = c("TC-01-001-NA", "TP-01-001-NA", "TC-02-002-NA"),
       "Estado_trampa" = "A",
-      "Fecha" = c("31/Ene/2025", "31/Ene/2025", "31/Ene/2025"),
+      "Fecha" = c("2025-01-31", "2025-01-31", "2025-01-31"),
     )
     obtained <- .add_type_column(data)
     expected <- tibble::tibble(
       "ID_de_trampa" = c("TC-01-001-NA", "TP-01-001-NA", "TC-02-002-NA"),
       "Estado_trampa" = "A",
-      "Fecha" = c("31/Ene/2025", "31/Ene/2025", "31/Ene/2025"),
+      "Fecha" = c("2025-01-31", "2025-01-31", "2025-01-31"),
       "type" = c("TC", "TP", "TC")
     )
     expect_equal(obtained, expected)

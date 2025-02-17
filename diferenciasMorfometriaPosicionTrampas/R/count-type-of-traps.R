@@ -24,17 +24,6 @@ count_active_traps <- function(data) {
 }
 
 filter_by_date <- function(data, cut_date) {
-  cut_date_spanish <- cut_date |>
-    .translate_months_name_spanish_to_english()
   data |>
-    dplyr::mutate(Fecha = .translate_months_name_spanish_to_english(Fecha)) |>
-    dplyr::filter(as.Date(Fecha, format = "%d/%b/%Y") > as.Date(cut_date_spanish, format = "%d/%b/%Y"))
-}
-
-.translate_months_name_spanish_to_english <- function(spanish_date) {
-  spanish_date |>
-    stringr::str_replace_all("Ene", "Jan") |>
-    stringr::str_replace_all("Abr", "Apr") |>
-    stringr::str_replace_all("Ago", "Aug") |>
-    stringr::str_replace_all("Dic", "Dec")
+    dplyr::filter(Fecha > cut_date)
 }
