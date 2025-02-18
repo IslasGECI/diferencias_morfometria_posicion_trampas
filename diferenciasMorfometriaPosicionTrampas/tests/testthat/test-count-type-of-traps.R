@@ -21,7 +21,7 @@ describe("🪙 Count active traps by type on certain period", {
     expected_number_of_rows <- 2
     obtained_number_of_rows <- nrow(obtained)
     expect_equal(obtained_number_of_rows, expected_number_of_rows)
-    expect_true(typeof(obtained$Fecha) == "Date")
+    expect_true(is.Date(obtained$Fecha))
   })
 })
 describe("Count active traps by type", {
