@@ -25,5 +25,6 @@ count_active_traps <- function(data) {
 
 filter_by_date <- function(data, cut_date) {
   data |>
-    dplyr::filter(Fecha > cut_date)
+    dplyr::mutate(Fecha = as.Date(Fecha)) |>
+    dplyr::filter(Fecha > as.Date(cut_date, format = "%Y-%m-%d"))
 }
