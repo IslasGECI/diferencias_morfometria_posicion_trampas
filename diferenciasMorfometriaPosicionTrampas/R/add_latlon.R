@@ -1,4 +1,8 @@
 #' @export
+convert_to_latlon_socorro <- function(options) {
+  convert_to_latlon(options)
+}
+#' @export
 convert_to_latlon <- function(options) {
   utm_data <- readr::read_csv(options[["data_path"]], show_col_types = FALSE)
   utm_data |>
