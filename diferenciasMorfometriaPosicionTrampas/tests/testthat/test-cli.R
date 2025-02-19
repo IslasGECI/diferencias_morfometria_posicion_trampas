@@ -1,3 +1,20 @@
+describe("Cli for transform UTM to latlon", {
+  it("convert_to_latlon()", {
+    utm_coordinates_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/morfometria_capitalized.csv"
+    utm_coordinates <- readr::read_csv(utm_coordinates_path, show_col_types = FALSE)
+    output_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/ids_in_latlon_socorro.csv"
+    options <- list("data_path" = utm_coordinates_path, "output_path" = output_path)
+    testtools::if_exist_remove(output_path)
+    convert_to_latlon_socorro(options)
+    expect_true(testtools::exist_output_file(output_path))
+
+    obtained_data <- readr::read_csv(output_path, show_col_types = FALSE)
+    added_columns <- c("Coordenada_Este", "Coordenada_Norte")
+    expect_true(all(!added_columns %in% colnames(obtained_data)))
+    # testtools::if_exist_remove(output_path)
+  })
+})
+
 describe("Test cli for write_type_of_traps", {
   it("Creates csv with type of traps", {
     data_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/traps_daily_status_guadalupe.csv"
