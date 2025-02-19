@@ -1,0 +1,4 @@
+Fecha,ID_de_trampa,Zona,Coordenada_Este,Coordenada_Norte,Responsable_de_captura,Otros_responsables,Longitud_total,Longitud_de_cola,Altura,Sexo,Edad,Patron,Gris,Negro,Pardo,Amarillo,Naranja,Blanco,Peso,Condicion_corporal,Estado_de_salud,Estado_reproductivo,Contenido_estomacal_notas,Contenido_estomacal_plumas,Contenido_estomacal_pelos,Contenido_estomacal_insectos,Contenido_estomacal_plantas,Contenido_estomacal_desperdicios,Contenido_estomacal_inorganico,Observaciones
+2023-11-01,TC-80-011-PC,80,504841,2075051,trapper_1,NA,NA,NA,NA,NA,Adulto,Solido,0,1,0,0,0,0,NA,NA,Muerto,NA,NA,NA,NA,NA,NA,NA,NA,En descomposicion 
+2023-11-02,TC-40-041-CF,40,499684,2084529,trapper_2,NA,NA,NA,NA,NA,Juvenil,atigrado,1,1,0,0,0,1,NA,NA,Muerto,Reproductivo,NA,NA,NA,NA,NA,NA,NA,En descomposicion 
+2023-11-03,TC-40-054-LE,40,500966,2079174,trapper_1,NA,NA,NA,NA,NA,adulto,Atigrado,1,1,0,0,0,0,NA,NA,Muerto,Reproductivo,NA,NA,NA,NA,NA,NA,NA,En descomposicion 
