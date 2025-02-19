@@ -22,7 +22,7 @@ describe("Cli for transform UTM to latlon to Socorro", {
     expect_true(all(obtained_data$longitude < max_lon))
     expect_true(all(obtained_data$longitude > min_lon))
   })
-  # testtools::if_exist_remove(output_path)
+  testtools::if_exist_remove(output_path)
 })
 
 describe("Test cli for write_type_of_traps", {
