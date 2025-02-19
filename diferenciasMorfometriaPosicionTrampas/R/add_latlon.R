@@ -1,6 +1,10 @@
 #' @export
 convert_to_latlon_socorro <- function(options) {
-  convert_to_latlon(options)
+  utm_data <- readr::read_csv(options[["data_path"]], show_col_types = FALSE)
+  utm_data |>
+    add_latlon(zone = 12) |>
+    dplyr::select(-c("Coordenada_Este", "Coordenada_Norte")) |>
+    readr::write_csv(options[["output_path"]])
 }
 #' @export
 convert_to_latlon <- function(options) {
