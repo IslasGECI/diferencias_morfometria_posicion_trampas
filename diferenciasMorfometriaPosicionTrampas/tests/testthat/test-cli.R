@@ -27,12 +27,13 @@ describe("Cli for transform UTM to latlon to Socorro", {
 
 describe("Test cli for write_type_of_traps_by_id", {
   it("Creates csv with type of traps", {
-    data_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/traps_daily_status_guadalupe.csv"
+    data_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/splited_trap_daily_status.csv"
     output_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/number_of_traps_by_type.csv"
     date <- "2025-02-01"
     options <- list("data_path" = data_path, "initial_date" = date, "output_path" = output_path)
     testtools::if_exist_remove(output_path)
     write_type_of_traps_by_id(options)
+    expect_true(testtools::exist_output_file(output_path))
   })
 })
 describe("Test cli for write_type_of_traps", {
