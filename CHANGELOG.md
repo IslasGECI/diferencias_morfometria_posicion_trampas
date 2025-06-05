@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2025-06-05
+
+### Added
+
+- Add function `write_type_of_traps_by_id()`. This function write the count of traps by position ID
+
+
 ## [0.3.0] - 2024-07-09
 
 ### Added
