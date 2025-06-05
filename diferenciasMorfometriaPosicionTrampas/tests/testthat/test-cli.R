@@ -45,6 +45,10 @@ describe("Test cli for write_type_of_traps", {
     testtools::if_exist_remove(output_path)
     write_type_of_traps(options)
     expect_true(testtools::exist_output_file(output_path))
+    expect_warning(
+      write_type_of_traps(options),
+      "The count is not accurate for unique positions ID. Use `write_type_of_traps_by_id()` instead."
+    )
     testtools::if_exist_remove(output_path)
   })
 })
