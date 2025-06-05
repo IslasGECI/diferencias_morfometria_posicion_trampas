@@ -36,8 +36,8 @@ count_unique_active_traps <- function(data) {
     dplyr::summarise(count = dplyr::n())
 }
 
-filter_by_date <- function(data, cut_date) {
+filter_by_date <- function(data, cut_date, date_column = `Fecha`) {
   data |>
-    dplyr::mutate(Fecha = lubridate::ymd(Fecha)) |>
-    dplyr::filter(Fecha > lubridate::ymd(cut_date))
+    dplyr::mutate({{ date_column }} := lubridate::ymd({{ date_column }})) |>
+    dplyr::filter({{ date_column }} > lubridate::ymd(cut_date))
 }
