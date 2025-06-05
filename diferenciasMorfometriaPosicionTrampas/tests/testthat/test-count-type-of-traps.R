@@ -4,6 +4,12 @@ assert_type_count <- function(data, trap_type, expected_number) {
     dplyr::pull(count)
   expect_equal(obtained_number, expected_number)
 }
+assert_unique_type_count <- function(data, trap_type, expected_number) {
+  obtained_number <- data |>
+    dplyr::filter(Type == trap_type) |>
+    dplyr::pull(count)
+  expect_equal(obtained_number, expected_number)
+}
 describe("Count unique active traps by type", {
   data <- tibble::tibble(
     "Date" = c("2025-01-31", "2025-02-01", "2025-01-31"),
@@ -14,11 +20,12 @@ describe("Count unique active traps by type", {
   )
   it("count_unique_active_traps()", {
     obtained <- count_unique_active_traps(data)
+    print(obtained)
     expected_number_of_TC <- 2
-    assert_type_count(obtained, "TC", expected_number_of_TC)
+    assert_unique_type_count(obtained, "TP", expected_number_of_TC)
 
     expected_number_of_TP <- 1
-    assert_type_count(obtained, "TP", expected_number_of_TP)
+    assert_unique_type_count(obtained, "TP", expected_number_of_TP)
   })
 })
 describe("🪙 Count active traps by type on certain period", {
