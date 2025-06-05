@@ -22,7 +22,7 @@ describe("Count unique active traps by type", {
     obtained <- count_unique_active_traps(data)
     print(obtained)
     expected_number_of_TC <- 2
-    assert_unique_type_count(obtained, "TP", expected_number_of_TC)
+    assert_unique_type_count(obtained, "TC", expected_number_of_TC)
 
     expected_number_of_TP <- 1
     assert_unique_type_count(obtained, "TP", expected_number_of_TP)
