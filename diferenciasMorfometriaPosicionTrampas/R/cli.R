@@ -20,6 +20,10 @@ write_type_of_traps_by_id <- function(options) {
 
 #' @export
 write_type_of_traps <- function(options) {
+  .Deprecated(
+    "write_type_of_traps_by_id",
+    msg = "The count is not accurate for unique positions ID. Use `write_type_of_traps_by_id()` instead."
+  )
   output_file <- options$output_path
   traps <- readr::read_csv(options$data_path, show_col_types = FALSE)
   traps |>
