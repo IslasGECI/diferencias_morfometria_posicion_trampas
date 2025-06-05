@@ -187,10 +187,11 @@ install_python:
 	pip install --editable .
 
 install_r:
-	R -e "devtools::document('diferenciasMorfometriaPosicionTrampas')" && \
-	R CMD build diferenciasMorfometriaPosicionTrampas && \
-	R CMD check diferenciasMorfometriaPosicionTrampas_0.3.0.tar.gz && \
-	R CMD INSTALL diferenciasMorfometriaPosicionTrampas_0.3.0.tar.gz
+	cd diferenciasMorfometriaPosicionTrampas && \
+	R -e "devtools::document()" && \
+	R -e "devtools::check(error_on = 'error')" && \
+	R -e "devtools::build()" && \
+	R -e "devtools::install()"
 
 linter:
 	$(call lint, ${module})
