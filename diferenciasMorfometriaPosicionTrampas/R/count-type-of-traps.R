@@ -6,7 +6,7 @@ count_active_traps_after_date <- function(data, cut_date) {
 
 count_unique_active_traps_after_date <- function(data, cut_date) {
   data |>
-    filter_by_date(cut_date, `Date`) |>
+    filter_by_date(cut_date, date_column = `Date`) |>
     count_unique_active_traps()
 }
 count_active_traps <- function(data) {
