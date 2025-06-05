@@ -6,8 +6,7 @@ count_active_traps_after_date <- function(data, cut_date) {
 
 count_unique_active_traps_after_date <- function(data, cut_date) {
   data |>
-    dplyr::mutate(Date = lubridate::ymd(Date)) |>
-    dplyr::filter(Date > lubridate::ymd(cut_date)) |>
+    filter_by_date(cut_date, `Date`) |>
     count_unique_active_traps()
 }
 count_active_traps <- function(data) {
