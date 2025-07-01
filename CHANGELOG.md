@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Fixed
+
+### Changed
+
+### Removed
+
+## [1.0.0] - 2025-07-01
+
+### Removed
+
+- Functions `write_traps_last_check()` and `write_type_of_traps()` by incompatibility with `trap_daily_status`.
+
+### Changed
+
+- Function `write_type_of_traps_by_id()` now expects date colum type as "Fecha".
+
+
 ## [0.4.0] - 2025-06-05
 
 ### Added
@@ -25,12 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Add functions `lower_columns_age_patron_and_status()` and `change_date_columns_to_geci_format()`.
-
-### Fixed
-
-### Changed
-
-### Removed
 
 ## [0.1.3] - 2023-08-14
 
