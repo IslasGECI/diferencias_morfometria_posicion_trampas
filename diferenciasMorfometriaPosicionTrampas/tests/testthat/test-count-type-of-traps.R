@@ -20,7 +20,7 @@ describe("Count unique active traps by type", {
   )
   cut_date <- "2025-01-31"
   it("count_unique_active_traps_after_date()", {
-    obtained <- xxcount_unique_active_traps_after_date(data, cut_date)
+    obtained <- count_unique_active_traps_after_date(data, cut_date)
     expected_number_of_TP <- 1
     assert_unique_type_count(obtained, "TP", expected_number_of_TP)
   })
