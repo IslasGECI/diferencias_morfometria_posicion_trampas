@@ -25,6 +25,22 @@ describe("Cli for transform UTM to latlon to Socorro", {
   testtools::if_exist_remove(output_path)
 })
 
+describe("Cli for transform UTM to latlon", {
+  it("convert_to_latlon()", {
+    utm_coordinates_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/morfometria_capitalized.csv"
+    output_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/ids_in_latlon.csv"
+    options <- list("data_path" = utm_coordinates_path, "output_path" = output_path)
+    testtools::if_exist_remove(output_path)
+    convert_to_latlon(options)
+    expect_true(testtools::exist_output_file(output_path))
+
+    obtained_data <- readr::read_csv(output_path, show_col_types = FALSE)
+    added_columns <- c("Coordenada_Este", "Coordenada_Norte")
+    expect_true(all(!added_columns %in% colnames(obtained_data)))
+    testtools::if_exist_remove(output_path)
+  })
+})
+
 describe("Test cli for write_type_of_traps_by_id", {
   it("Creates csv with type of traps", {
     data_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/splited_trap_daily_status.csv"
