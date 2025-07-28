@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.0.1] - 2025-07-28
+### Fixed
+- Functions `convert_to_latlon()` and `convert_to_latlon_socorro()` does not drop UTM coordinates.
+
 ## [1.0.0] - 2025-07-01
 
 ### Removed
@@ -59,6 +63,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update recipe `install-r`.
 - Export function `check_columns_name()`.
 
+[1.0.1]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.2.0...v1.0.0
 [0.2.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.1.1...v0.1.2
