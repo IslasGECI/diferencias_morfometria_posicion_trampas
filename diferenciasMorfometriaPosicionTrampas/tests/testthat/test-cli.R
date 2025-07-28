@@ -9,7 +9,7 @@ describe("Cli for transform UTM to latlon to Socorro", {
     expect_true(testtools::exist_output_file(output_path))
     obtained_data <- readr::read_csv(output_path, show_col_types = FALSE)
     added_columns <- c("Coordenada_Este", "Coordenada_Norte")
-    expect_true(all(!added_columns %in% colnames(obtained_data)))
+    expect_true(all(added_columns %in% colnames(obtained_data)))
   })
   it("check coordinates range", {
     max_lat <- 18.8599
