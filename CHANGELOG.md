@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.2.0] - 2026-02-10
+### Added
+- CLI command `write_tidy_traps_positions` to write tidy format of position traps file.
+
 ## [1.0.1] - 2025-07-28
 ### Fixed
 - Functions `convert_to_latlon()` and `convert_to_latlon_socorro()` does not drop UTM coordinates.
