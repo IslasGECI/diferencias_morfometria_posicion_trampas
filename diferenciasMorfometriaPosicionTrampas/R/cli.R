@@ -27,6 +27,14 @@ write_cleaned_socorro_morphometry <- function(options) {
 }
 
 #' @export
+write_tidy_traps_positions <- function(options) {
+  traps_positions <- readr::read_csv(options[["trap-positions-path"]], show_col_types = FALSE)
+  traps_positions |>
+    effort_2_tidy() |>
+    readr::write_csv(options[["output-path"]])
+}
+
+#' @export
 convert_to_latlon_socorro <- function(options) {
   utm_data <- readr::read_csv(options[["data_path"]], show_col_types = FALSE)
   utm_data |>
