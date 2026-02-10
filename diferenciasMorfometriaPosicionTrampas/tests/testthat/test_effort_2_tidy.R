@@ -10,7 +10,7 @@ describe("Que la función pase al formato tidy", {
     expect_equal(obtained_columns, expected_columns)
   })
   it("expected number of rows", {
-    obtained <- effort_2_tidy(datos_prueba)
+    obtained <- xxeffort_2_tidy(datos_prueba)
     obtained_rows <- nrow(obtained)
     expected_rows <- 42
     expect_equal(obtained_rows, expected_rows)
