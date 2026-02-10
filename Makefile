@@ -188,10 +188,9 @@ install_python:
 
 install_r:
 	cd diferenciasMorfometriaPosicionTrampas && \
-	R -e "devtools::document()" && \
+	R -e "devtools::install()" && \
 	R -e "devtools::check(error_on = 'error')" && \
-	R -e "devtools::build()" && \
-	R -e "devtools::install()"
+	R -e "devtools::build()"
 
 linter:
 	$(call lint, ${module})
