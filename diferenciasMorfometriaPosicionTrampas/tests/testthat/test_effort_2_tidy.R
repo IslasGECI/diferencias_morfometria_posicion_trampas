@@ -4,13 +4,13 @@ datos_prueba_sin_capturas <- readr::read_csv("/workdir/diferenciasMorfometriaPos
 
 describe("Que la función pase al formato tidy", {
   it("expected number of columns", {
-    obtained <- xxeffort_2_tidy(datos_prueba)
+    obtained <- effort_2_tidy(datos_prueba)
     obtained_columns <- colnames(obtained)
     expected_columns <- c("ID_de_trampa", "Estado_trampa", "Fecha", "Atrayente")
     expect_equal(obtained_columns, expected_columns)
   })
   it("expected number of rows", {
-    obtained <- xxeffort_2_tidy(datos_prueba)
+    obtained <- effort_2_tidy(datos_prueba)
     obtained_rows <- nrow(obtained)
     expected_rows <- 42
     expect_equal(obtained_rows, expected_rows)
@@ -22,10 +22,10 @@ describe("Que la función pase al formato tidy", {
       Fecha = rep(c("4/27/2020", "4/28/2020", "4/29/2020", "4/30/2020", "5/1/2020", "5/2/2020", "5/3/2020"), 3),
       Atrayente = c(rep("Cebo tradicional", 14), rep("Orina de lince", 7))
     )
-    obtained <- xxeffort_2_tidy(datos_prueba_2)
+    obtained <- effort_2_tidy(datos_prueba_2)
     expect_equal(obtained, salida_test_2)
   })
   it("expected output without captures", {
-    expect_message(xxeffort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
+    expect_message(effort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
   })
 })
