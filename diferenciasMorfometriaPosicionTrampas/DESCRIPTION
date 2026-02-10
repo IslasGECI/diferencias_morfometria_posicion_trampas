@@ -1,23 +1,31 @@
 Package: diferenciasMorfometriaPosicionTrampas
-Type: Package
 Title: Diferencias morfometría posición trampas
-Version: 1.0.1
-Date: 2024-07-09
-Author: Ciencia de Datos • GECI
-Maintainer: Ciencia de Datos <ciencia.datos@islas.org.mx>
+Authors@R: c(
+    person(given = "Ciencia de Datos",
+           family = "GECI",
+           role = c("aut", "cre", "cph"),
+           email = "ciencia.datos@islas.org.mx"
+           ))
+Config/testthat/edition: 3
 Description: Tools to check columns format, and remove in all tables.
+Encoding: UTF-8
 Imports:
 	dplyr,
+	geci.optparse,
 	lubridate,
 	oce,
 	readr,
 	reshape2,
 	stringr,
 	tibble,
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.1
+License: AGPL-3.0-or-later
+Remotes:
+	IslasGECI/geci_optparse,
+	IslasGECI/testtools,
 Suggests:
 	testthat,
 	testtools,
-Config/testthat/edition: 3
-RoxygenNote: 7.2.1
-License: GPL-3
-Encoding: UTF-8
+Type: Package
+Version: 1.0.1
