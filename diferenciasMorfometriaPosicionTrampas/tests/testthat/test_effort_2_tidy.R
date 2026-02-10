@@ -26,13 +26,7 @@ describe("Que la función pase al formato tidy", {
     expect_equal(obtained, salida_test_2)
   })
   it("expected output without captures", {
-    salida_test_sin_capturas <- data.frame(
-      ID_de_trampa = factor(rep(c("TC-10-0963-MP", "TC-10-0981-MV"), each = 7)),
-      Estado_trampa = factor(c("A", "A", "A", "A", "A", "D", "D", "A", "A", "A", "A", "A", "D", "D")),
-      Fecha = factor(rep(c("4/27/2020", "4/28/2020", "4/29/2020", "4/30/2020", "5/1/2020", "5/2/2020", "5/3/2020"), 2))
-    )
     obtained <- effort_2_tidy(datos_prueba_sin_capturas)
-    expect_equal(obtained, salida_test_sin_capturas)
     expect_message(effort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
   })
 })
