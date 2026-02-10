@@ -1,9 +1,6 @@
-archivo_prueba <- "../data_tests/esfuerzo_data_tests.csv"
-datos_prueba <- readr::read_csv(archivo_prueba, show_col_types = FALSE)
-archivo_prueba <- "../data_tests/esfuerzo_data_tests_2.csv"
-datos_prueba_2 <- readr::read_csv(archivo_prueba, show_col_types = FALSE)
-archivo_prueba <- "../data_tests/esfuerzo_data_tests_sin_capturas.csv"
-datos_prueba_sin_capturas <- readr::read_csv(archivo_prueba, show_col_types = FALSE)
+datos_prueba <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests.csv", show_col_types = FALSE)
+datos_prueba_2 <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests_2.csv", show_col_types = FALSE)
+datos_prueba_sin_capturas <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests_sin_capturas.csv", show_col_types = FALSE)
 
 describe("Que la función pase al formato tidy", {
   it("expected number of columns", {
