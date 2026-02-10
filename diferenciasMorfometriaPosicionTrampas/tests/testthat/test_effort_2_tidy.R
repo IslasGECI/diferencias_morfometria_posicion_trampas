@@ -26,7 +26,6 @@ describe("Que la función pase al formato tidy", {
     expect_equal(obtained, salida_test_2)
   })
   it("expected output without captures", {
-    obtained <- effort_2_tidy(datos_prueba_sin_capturas)
-    expect_message(effort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
+    expect_message(xxeffort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
   })
 })
