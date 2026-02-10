@@ -52,3 +52,9 @@ describe("Test cli for write_type_of_traps_by_id", {
     expect_true(testtools::exist_output_file(output_path))
   })
 })
+describe("Test write_tidy_traps_positions", {
+  output_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/tidy_test.csv"
+  options <- list("trap-positions-path" = "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests.csv", "output-path" = output_path)
+  write_tidy_traps_positions(options)
+  expect_true(testtools::exist_output_file(output_path))
+})
