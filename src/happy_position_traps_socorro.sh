@@ -39,9 +39,9 @@ files_path=$(dirname ${weekly_position_csv})
 # 5. Hacerlos tidy (feature/agrega_script_con_cli)
 	echo "CONVIERTE TABLA A FORMATO TIDY Y CAMBIA FORMATO DE FECHA"
     tidy_position_csv=${files_path}/tidy_position.csv
-	src/make_table_tidy.R \
-		--data ${cutted_position_csv} \
-		--salida ${tidy_position_csv} \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_tidy_traps_positions(diferenciasMorfometriaPosicionTrampas::get_domain_specific_options())" \
+		--trap-positions-path ${weekly_position_csv} \
+		--output-path ${tidy_position_csv} \
 	&& cambia_formato_fecha ${tidy_position_csv} \
 		> ${files_path}/ISO_tidy_positions.csv
 
