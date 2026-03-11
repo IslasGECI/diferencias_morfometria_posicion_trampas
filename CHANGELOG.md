@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.3.0] - 2026-03-11
+### Changed
+- CLI command `write_tidy_traps_positions` now writes the column "Nombre_del_responsable".
+
 ## [1.2.0] - 2026-02-10
 ### Added
 - CLI command `write_tidy_traps_positions` to write tidy format of position traps file.
