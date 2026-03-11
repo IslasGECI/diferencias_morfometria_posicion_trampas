@@ -188,7 +188,7 @@ install_python:
 
 install_r:
 	cd diferenciasMorfometriaPosicionTrampas && \
-	R -e "devtools::install()" && \
+	R -e "devtools::install(dependencies=TRUE)" && \
 	R -e "devtools::check(error_on = 'error')" && \
 	R -e "devtools::build()"
 
