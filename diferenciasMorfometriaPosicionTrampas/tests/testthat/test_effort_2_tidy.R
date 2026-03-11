@@ -3,13 +3,13 @@ datos_prueba_sin_capturas <- readr::read_csv("/workdir/diferenciasMorfometriaPos
 
 describe("Que la función pase al formato tidy", {
   it("expected number of columns", {
-    obtained <- xxeffort_2_tidy(datos_prueba)
+    obtained <- effort_2_tidy(datos_prueba)
     obtained_columns <- colnames(obtained)
     expected_columns <- c("ID_de_trampa", "Estado_trampa", "Fecha", "Atrayente", "Nombre_del_responsable")
     expect_equal(obtained_columns, expected_columns)
   })
   it("expected number of rows", {
-    obtained <- xxeffort_2_tidy(datos_prueba)
+    obtained <- effort_2_tidy(datos_prueba)
     obtained_rows <- nrow(obtained)
     number_of_days <- 7
     number_of_traps <- nrow(datos_prueba)
@@ -17,6 +17,6 @@ describe("Que la función pase al formato tidy", {
     expect_equal(obtained_rows, expected_rows)
   })
   it("expected output without captures", {
-    expect_message(xxeffort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
+    expect_message(effort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
   })
 })
