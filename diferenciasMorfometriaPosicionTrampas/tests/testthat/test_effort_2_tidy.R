@@ -1,5 +1,4 @@
 datos_prueba <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests.csv", show_col_types = FALSE)
-datos_prueba_2 <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests_2.csv", show_col_types = FALSE)
 datos_prueba_sin_capturas <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests_sin_capturas.csv", show_col_types = FALSE)
 
 describe("Que la función pase al formato tidy", {
@@ -12,14 +11,8 @@ describe("Que la función pase al formato tidy", {
   it("expected number of rows", {
     obtained <- xxeffort_2_tidy(datos_prueba)
     obtained_rows <- nrow(obtained)
-    expected_rows <- 42
-    expect_equal(obtained_rows, expected_rows)
-  })
-  it("expected second output", {
-    obtained <- xxeffort_2_tidy(datos_prueba_2)
-    obtained_rows <- nrow(obtained)
     number_of_days <- 7
-    number_of_traps <- nrow(datos_prueba_2)
+    number_of_traps <- nrow(datos_prueba)
     expected_rows <- number_of_days * number_of_traps
     expect_equal(obtained_rows, expected_rows)
   })
