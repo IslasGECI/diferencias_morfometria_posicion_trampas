@@ -4,7 +4,7 @@ datos_prueba_sin_capturas <- readr::read_csv("/workdir/diferenciasMorfometriaPos
 
 describe("Que la función pase al formato tidy", {
   it("expected number of columns", {
-    obtained <- effort_2_tidy(datos_prueba)
+    obtained <- xxeffort_2_tidy(datos_prueba)
     obtained_columns <- colnames(obtained)
     expected_columns <- c("ID_de_trampa", "Estado_trampa", "Fecha", "Atrayente", "Nombre_del_responsable")
     expect_equal(obtained_columns, expected_columns)
