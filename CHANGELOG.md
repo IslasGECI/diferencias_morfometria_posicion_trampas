@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [1.4.0] - 2026-03-24
+### Added
+- CLI command `write_captures_from_tidy_positions`. Write to disk the captures marked as "X" or "RX" in the tidy format of position traps file.
+
 ## [1.3.0] - 2026-03-11
 ### Changed
 - CLI command `write_tidy_traps_positions` now writes the column "Nombre_del_responsable".
