@@ -83,7 +83,7 @@ mkdir --parents ${errors_directory}
 
 # 6.2 Posición trampa
 	echo "SELECCIONA CAPTURAS DEL ARCHIVO POSICIÓN TRAMPAS"
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_captures_from_tidy_positions(geci.optparse::get_options()) \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_captures_from_tidy_positions(geci.optparse::get_options())" \
 		--data_path ${position_trap_data_file}_ISO8601.csv \
 		--output_path ${files_path}/cleaned_position_traps.csv
 
