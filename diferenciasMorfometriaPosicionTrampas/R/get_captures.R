@@ -1,3 +1,3 @@
 filter_captures <- function(trap_status) {
-  trap_status |> dplyr::filter(Estado_trampa == "X")
+  trap_status |> dplyr::filter(Estado_trampa %in% c("X", "RX"))
 }
