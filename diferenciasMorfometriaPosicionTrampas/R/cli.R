@@ -51,7 +51,7 @@ convert_to_latlon <- function(options) {
 }
 
 #' @export
-get_captures <- function(options) {
+write_captures_from_tidy_positions <- function(options) {
   trap_status_data <- readr::read_csv(options[["data_path"]], show_col_types = FALSE)
   trap_status_data |>
     filter_captures() |>

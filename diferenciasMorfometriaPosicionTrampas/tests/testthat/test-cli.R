@@ -58,10 +58,10 @@ describe("Test write_tidy_traps_positions", {
   write_tidy_traps_positions(options)
   expect_true(testtools::exist_output_file(output_path))
 })
-describe("Test get_captures cli", {
+describe("Test write_captures_from_tidy_positions cli", {
   output_path <- "/workdir/diferenciasMorfometriaPosicionTrampas/tests/captures_test.csv"
   options <- list("data_path" = "/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/position_tidy_ISO.csv", "output_path" = output_path)
   testtools::if_exist_remove(output_path)
-  get_captures(options)
+  write_captures_from_tidy_positions(options)
   expect_true(testtools::exist_output_file(output_path))
 })
