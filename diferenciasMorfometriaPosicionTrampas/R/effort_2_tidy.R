@@ -7,7 +7,7 @@ effort_2_tidy <- function(datos_prueba) {
     tidyr::pivot_longer(cols = -c(ID, Atrayente, Nombre_del_responsable), names_to = "Fecha", values_to = "Estado_trampa") |>
     dplyr::select(ID_de_trampa = ID, Estado_trampa, Fecha, Atrayente, Nombre_del_responsable)
 
-  rows_with_captures <- dplyr::filter(long_format, Estado_trampa == "X")
+  rows_with_captures <- long_format |> filter_captures()
   if (nrow(rows_with_captures) == 0) {
     message("NO HAY CAPTURAS")
   }
