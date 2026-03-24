@@ -83,9 +83,9 @@ mkdir --parents ${errors_directory}
 
 # 6.2 Posición trampa
 	echo "SELECCIONA CAPTURAS DEL ARCHIVO POSICIÓN TRAMPAS"
-	src/get_captures.R \
-		--data=${position_trap_data_file}_ISO8601.csv \
-		--out=${files_path}/cleaned_position_traps.csv
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_captures_from_tidy_positions(geci.optparse::get_options()) \
+		--data_path ${position_trap_data_file}_ISO8601.csv \
+		--output_path ${files_path}/cleaned_position_traps.csv
 
 # 7. Comparar morfometría con posicion (Capturas que no están en morfometría)
 	echo "LAS CAPTURAS FALTANTES EN EL ARCHIVO DE MORFOMETRÍA ESTÁN EN EL ARCHIVO missing_captures_in_morphometry"

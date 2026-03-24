@@ -25,9 +25,6 @@ csv_PosicionTrampasGatosDatapackage = \
 csvMorfometriaGatos = \
 	data/raw/morfometria_gatos_erradicacion_isla_guadalupe.csv
 
-csvPosicionTrampas = \
-	data/raw/posicion_trampas_gatos_isla_guadalupe.csv
-
 csvMorfometriaGatosISO8601 = \
 	data/raw/morfometria_gatos_erradicacion_isla_guadalupe_ISO8601.csv
 
@@ -37,11 +34,6 @@ csvCleanedPositionTraps = \
 csvCleanedMorphometryCats = \
 	reports/tables/cleaned_morphometry_cats.csv
 
-csvMissingPosition = \
-	reports/tables/missing_captures_in_position.csv
-
-csvMissingMorfometry = \
-	reports/tables/missing_captures_in_morfometry.csv
 
 # III. Reglas para construir los objetivos principales
 # ===========================================================================
@@ -59,18 +51,6 @@ $(csvCleanedMorphometryCats): data/raw/morfometria_gatos_erradicacion_isla_guada
 		--data_path=data/raw/morfometria_gatos_erradicacion_isla_guadalupe_ISO8601.csv \
 		--output_path=$@
 
-$(csvCleanedPositionTraps): $(csvPosicionTrampas) src/get_captures.R
-	$(checkDirectories)
-	src/get_captures.R \
-		--data=$< \
-		--out=$@
-
-$(csvMissingPosition): $(csvCleanedMorphometryCats) $(csvCleanedPositionTraps)
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_diff_in_captures_between(geci.optparse::get_options())" \
-		--left_data=reports/tables/cleaned_morphometry_cats.csv \
-		--right_data=reports/tables/cleaned_position_traps.csv \
-		--output_path=$@
-
 $(csv_PosicionTrampasGatosDatapackage): $(csvIgPosicionTrampas10May2020) src/change_header
 	$(checkDirectories)
 	src/change_header $< > $@
@@ -78,12 +58,6 @@ $(csv_PosicionTrampasGatosDatapackage): $(csvIgPosicionTrampas10May2020) src/cha
 $(csvRepeatedDataTest): $(csvIgPosicionTrampas10May2020) src/distinct_position_traps
 	$(checkDirectories)
 	src/distinct_position_traps $< > $@
-
-$(csvMissingMorfometry): $(csvCleanedMorphometryCats) $(csvCleanedPositionTraps)
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_diff_in_captures_between(geci.optparse::get_options())" \
-		--left_data=reports/tables/cleaned_position_traps.csv \
-		--right_data=reports/tables/cleaned_morphometry_cats.csv \
-		--output_path=$@
 
 
 # V. Reglas del resto de los phonies
@@ -173,7 +147,7 @@ format:
 
 init: setup tests
 
-setup: init_github install
+setup: init_github clean install
 	shellspec --init
 
 init_github:
