@@ -49,3 +49,11 @@ convert_to_latlon <- function(options) {
     add_latlon() |>
     readr::write_csv(options[["output_path"]])
 }
+
+#' @export
+get_captures <- function(options) {
+  trap_status_data <- readr::read_csv(options[["data_path"]], show_col_types = FALSE)
+  trap_status_data |>
+    filter_captures() |>
+    readr::write_csv(options[["output_path"]])
+}
