@@ -47,7 +47,7 @@ $(csvMorfometriaGatosISO8601): $(csvMorfometriaGatos)
 
 $(csvCleanedMorphometryCats): data/raw/morfometria_gatos_erradicacion_isla_guadalupe_ISO8601.csv
 	$(checkDirectories)
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_morphometry(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_morphometry(gecioptparse::get_options())" \
 		--data_path=data/raw/morfometria_gatos_erradicacion_isla_guadalupe_ISO8601.csv \
 		--output_path=$@
 

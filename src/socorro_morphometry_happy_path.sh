@@ -22,10 +22,10 @@ cat_morphometry_data_file=${cat_morphometry_data_path}/${cat_morphometry_file_na
 
 # Tiene que ser la salida de la funcion cambia formato_fecha (ISO8601)
 	echo "SELECCIONA CAPTURAS DEL ARCHIVO MORFOMETRÍA GATOS"
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_socorro_morphometry(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_socorro_morphometry(gecioptparse::get_options())" \
 	--data_path=${cat_morphometry_data_file}_ISO8601.csv \
 	--output_path=${cat_morphometry_data_path}/cleaned_morphometry_cats.csv
 
-Rscript -e "diferenciasMorfometriaPosicionTrampas::write_morphometry_geci_format(geci.optparse::get_options())" \
+Rscript -e "diferenciasMorfometriaPosicionTrampas::write_morphometry_geci_format(gecioptparse::get_options())" \
 	--data_path ${cat_morphometry_data_path}/cleaned_morphometry_cats.csv \
 	--output_path ${cat_morphometry_data_path}/cleaned_morphometry_cats_geci_format.csv

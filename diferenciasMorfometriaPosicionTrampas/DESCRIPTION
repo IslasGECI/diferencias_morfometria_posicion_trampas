@@ -11,7 +11,7 @@ Description: Tools to check columns format, and remove in all tables.
 Encoding: UTF-8
 Imports:
 	dplyr,
-	geci.optparse,
+	gecioptparse,
 	lubridate,
 	oce,
 	readr,

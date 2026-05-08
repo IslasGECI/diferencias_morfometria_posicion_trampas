@@ -77,31 +77,31 @@ mkdir --parents ${errors_directory}
 
 # Tiene que ser la salida de la funcion cambia formato_fecha (ISO8601)
 	echo "SELECCIONA CAPTURAS DEL ARCHIVO MORFOMETRÍA GATOS"
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_morphometry(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_morphometry(gecioptparse::get_options())" \
 	--data_path=${cat_morphometry_data_file}_ISO8601.csv \
 	--output_path=${files_path}/cleaned_morphometry_cats.csv
 
 # 6.2 Posición trampa
 	echo "SELECCIONA CAPTURAS DEL ARCHIVO POSICIÓN TRAMPAS"
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_captures_from_tidy_positions(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_captures_from_tidy_positions(gecioptparse::get_options())" \
 		--data_path ${position_trap_data_file}_ISO8601.csv \
 		--output_path ${files_path}/cleaned_position_traps.csv
 
 # 7. Comparar morfometría con posicion (Capturas que no están en morfometría)
 	echo "LAS CAPTURAS FALTANTES EN EL ARCHIVO DE MORFOMETRÍA ESTÁN EN EL ARCHIVO missing_captures_in_morphometry"
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_diff_in_captures_between(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_diff_in_captures_between(gecioptparse::get_options())" \
 		--left_data=${files_path}/cleaned_position_traps.csv \
 		--right_data=${files_path}/cleaned_morphometry_cats.csv \
 		--output_path=${errors_directory}/missing_captures_in_morphometry.csv
 
 # 8. Comparar posicion con morfometría (Capturas que no están en posición)
 	echo "LAS CAPTURAS FALTANTES EN EL ARCHIVO DE MORFOMETRÍA ESTÁN EN EL ARCHIVO missing_captures_in_morphometry"
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_diff_in_captures_between(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_diff_in_captures_between(gecioptparse::get_options())" \
 		--left_data=${files_path}/cleaned_morphometry_cats.csv \
 		--right_data=${files_path}/cleaned_position_traps.csv \
 		--output_path=${errors_directory}/missing_captures_in_position.csv
 
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_morphometry_geci_format(geci.optparse::get_options())" \
+	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_morphometry_geci_format(gecioptparse::get_options())" \
 		--data_path ${files_path}/cleaned_morphometry_cats.csv \
 		--output_path ${files_path}/cleaned_morphometry_cats_geci_format.csv
 
