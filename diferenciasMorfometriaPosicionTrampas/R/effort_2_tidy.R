@@ -1,7 +1,7 @@
 #' @export
 effort_2_tidy <- function(datos_prueba) {
   filter_table <-
-    datos_prueba |> dplyr::select(c("ID", "Nombre_del_responsable", (length(datos_prueba) - 6):(length(datos_prueba)) - 2), length(datos_prueba))
+    datos_prueba |> dplyr::select(dplyr::any_of(c("ID", "Nombre_del_responsable", "Atrayente")), contains("/"))
 
   long_format <- filter_table |>
     tidyr::pivot_longer(cols = -c(ID, Atrayente, Nombre_del_responsable), names_to = "Fecha", values_to = "Estado_trampa") |>
