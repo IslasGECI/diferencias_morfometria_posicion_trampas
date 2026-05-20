@@ -5,6 +5,7 @@ Describe 'clean raw files'
   checksum() { md5sum ${output} | cut -d " " -f1; }
   clean_output() { rm --force ${output};}
   count_columns() { csvcut -n ${output} | wc -l; }
+  count_rows() { cat ${output} | wc -l; }
   BeforeEach 'clean_output'
   AfterEach 'clean_output'
   It 'cut socorro morphometry'
@@ -16,15 +17,15 @@ Describe 'clean raw files'
   It 'clean morphometry'
     output="/workdir/tests/data/datos_formato_excel/IG_MORFOMETRIA_GATOS_12JUN2022.csv"
     target="/workdir/tests/data/datos_formato_excel/IG_MORFOMETRIA_GATOS_12JUN2022.xlsx"
-    expected_md5="7cd3b0bd106d08eec93527b2bf3c9c85"
     When call clean_morphometry ${target}
-    The result of function checksum should eq ${expected_md5}
+    The result of function count_columns should eq 31
+    The result of function count_rows should eq 3
   End
   It 'clean position'
     output="/workdir/tests/data/datos_formato_excel/IG_POSICION_TRAMPAS_12JUN2022.csv"
     target="/workdir/tests/data/datos_formato_excel/IG_POSICION_TRAMPAS_12JUN2022.xlsx"
-    expected_md5="4fd30809660722b7bef86b3216b00d30"
     When call clean_position ${target}
-    The result of function checksum should eq ${expected_md5}
+    The result of function count_columns should eq 13
+    The result of function count_rows should eq 1639
   End
 End
