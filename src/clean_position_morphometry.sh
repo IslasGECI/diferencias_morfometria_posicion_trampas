@@ -21,7 +21,7 @@ get_base_filename(){
     local src_path=$(dirname "${data_file}")
     table_name=$(basename "${data_file}" .xlsx)
     file_name=${src_path}/${table_name}
-    echo "${file_name}"
+    echo $file_name
 }
 
 clean_position() {
