@@ -18,7 +18,7 @@ xlsx_2_csv(){
 
 xx_xlsx_2_csv(){
     data_file=${1}
-    file_name=$(get_base_filename ${data_file})
+    file_name=${2}
     tmp_file_name=${file_name}.tmp
     in2csv --no-header-row --blanks ${data_file} | tail --lines=+2 > ${tmp_file_name}
 }
@@ -52,8 +52,8 @@ cut_socorro_morphometry() {
 cut_file() {
     data_file=${1}
     number_columns=${2}
-    xx_xlsx_2_csv ${data_file}
     file_name=$(get_base_filename ${data_file})
+    xx_xlsx_2_csv ${data_file} ${file_name}
     tmp_file_name=${file_name}.tmp
     csv_file_name=${file_name}.csv
     cut_csv_file ${number_columns} ${tmp_file_name} ${csv_file_name}
