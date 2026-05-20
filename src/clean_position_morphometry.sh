@@ -23,25 +23,21 @@ get_base_filename(){
 
 clean_position() {
     data_file=${1}
-    number_columns=13
-    cut_file ${data_file} ${number_columns}
+    cut_file ${data_file}
 }
 
 clean_morphometry() {
     data_file=${1}
-    number_columns=31
-    cut_file ${data_file} ${number_columns}
+    cut_file ${data_file}
 }
 
 cut_socorro_morphometry() {
     data_file=${1}
-    number_columns=32
-    cut_file ${data_file} ${number_columns}
+    cut_file ${data_file}
 }
 
 cut_file() {
     data_file=${1}
-    number_columns=${2}
     file_name=$(get_base_filename ${data_file})
     xlsx_2_csv ${data_file} ${file_name}
     tmp_file_name=${file_name}.tmp
