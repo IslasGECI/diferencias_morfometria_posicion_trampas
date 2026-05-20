@@ -1,10 +1,11 @@
 #' @export
 effort_2_tidy <- function(datos_prueba) {
+  columns_to_select <- c("ID", "Atrayente", "Nombre_del_responsable")
   filter_table <-
-    datos_prueba |> dplyr::select(dplyr::any_of(c("ID", "Nombre_del_responsable", "Atrayente")), contains("/"))
+    datos_prueba |> dplyr::select(dplyr::any_of(columns_to_select), contains("/"))
 
   long_format <- filter_table |>
-    tidyr::pivot_longer(cols = -c(ID, Atrayente, Nombre_del_responsable), names_to = "Fecha", values_to = "Estado_trampa") |>
+    tidyr::pivot_longer(cols = -columns_to_select, names_to = "Fecha", values_to = "Estado_trampa") |>
     dplyr::select(ID_de_trampa = ID, Estado_trampa, Fecha, Atrayente, Nombre_del_responsable)
 
   rows_with_captures <- long_format |> filter_captures()
