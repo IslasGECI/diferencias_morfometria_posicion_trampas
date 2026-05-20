@@ -164,7 +164,8 @@ install_r:
 	cd diferenciasMorfometriaPosicionTrampas && \
 	R -e "devtools::install(dependencies=TRUE)" && \
 	R -e "devtools::check(error_on = 'error')" && \
-	R -e "devtools::build()"
+	R -e "devtools::build()" && \
+	R -e "devtools::document()"
 
 linter:
 	$(call lint, ${module})
