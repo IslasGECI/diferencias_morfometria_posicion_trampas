@@ -45,10 +45,13 @@ cut_file() {
     file_name=$(get_base_filename ${data_file})
     xlsx_2_csv ${data_file} ${file_name}
     tmp_file_name=${file_name}.tmp
+    number_columns=$(count_columns ${tmp_file_name})
     csv_file_name=${file_name}.csv
     cut_csv_file ${number_columns} ${tmp_file_name} ${csv_file_name}
 }
     
+count_columns() { csvcut -n ${1} | grep -c ": ." ; }
+
 cut_csv_file() {
     number_columns=${1}
     input_file_name=${2}
