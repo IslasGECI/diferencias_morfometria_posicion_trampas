@@ -20,7 +20,7 @@ get_base_filename(){
     data_file=${1}
     local src_path=$(dirname "${data_file}")
     table_name=$(basename "${data_file}" .xlsx)
-    file_name=${src_path}/${table_name}
+    file_name=$src_path/$table_name
     echo $file_name
 }
 
