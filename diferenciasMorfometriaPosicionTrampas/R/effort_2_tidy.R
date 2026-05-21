@@ -1,10 +1,10 @@
 #' @export
-effort_2_tidy <- function(datos_prueba) {
-  columns_to_select <- get_existing_columns_to_select_in_df(datos_prueba)
-  filter_table <-
-    datos_prueba |> dplyr::select(dplyr::all_of(columns_to_select), dplyr::contains("/"))
+effort_2_tidy <- function(trap_effort_data) {
+  columns_to_select <- get_existing_columns_to_select_in_df(trap_effort_data)
+  selected_table <-
+    trap_effort_data |> dplyr::select(dplyr::all_of(columns_to_select), dplyr::contains("/"))
 
-  long_format <- filter_table |>
+  long_format <- selected_table |>
     tidyr::pivot_longer(cols = -dplyr::all_of(columns_to_select), names_to = "Fecha", values_to = "Estado_trampa")
 
   updated_columns_to_select <- c(columns_to_select, "Fecha", "Estado_trampa")
