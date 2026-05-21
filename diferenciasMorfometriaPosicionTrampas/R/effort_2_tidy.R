@@ -1,6 +1,6 @@
 #' @export
 effort_2_tidy <- function(datos_prueba) {
-  columns_to_select <- c("ID", "Atrayente", "Nombre_del_responsable")
+  columns_to_select <- get_existing_columns_to_select_in_df(datos_prueba)
   filter_table <-
     datos_prueba |> dplyr::select(columns_to_select, contains("/"))
 
