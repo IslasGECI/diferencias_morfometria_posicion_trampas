@@ -15,3 +15,7 @@ effort_2_tidy <- function(datos_prueba) {
   }
   return(long_format)
 }
+
+check_columns_to_select <- function(df) {
+  df
+}
