@@ -2,14 +2,14 @@
 effort_2_tidy <- function(datos_prueba) {
   columns_to_select <- get_existing_columns_to_select_in_df(datos_prueba)
   filter_table <-
-    datos_prueba |> dplyr::select(columns_to_select, contains("/"))
+    datos_prueba |> dplyr::select(dplyr::all_of(columns_to_select), dplyr::contains("/"))
 
   long_format <- filter_table |>
     tidyr::pivot_longer(cols = -columns_to_select, names_to = "Fecha", values_to = "Estado_trampa")
 
   updated_columns_to_select <- c(columns_to_select, "Fecha", "Estado_trampa")
   long_format_selected <- long_format |>
-    dplyr::select(updated_columns_to_select) |>
+    dplyr::select(dplyr::all_of(updated_columns_to_select)) |>
     dplyr::rename(ID_de_trampa = ID)
 
   rows_with_captures <- long_format_selected |> filter_captures()
