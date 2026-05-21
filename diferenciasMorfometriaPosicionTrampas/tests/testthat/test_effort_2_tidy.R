@@ -2,11 +2,17 @@ datos_prueba <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/
 datos_prueba_sin_capturas <- readr::read_csv("/workdir/diferenciasMorfometriaPosicionTrampas/tests/data_tests/esfuerzo_data_tests_sin_capturas.csv", show_col_types = FALSE)
 
 describe("Que la función pase al formato tidy", {
-  it("expected number of columns", {
+  it("expected columns", {
     obtained <- effort_2_tidy(datos_prueba)
     obtained_columns <- colnames(obtained)
     expected_columns <- c("ID_de_trampa", "Estado_trampa", "Fecha", "Atrayente", "Nombre_del_responsable")
     expect_equal(obtained_columns, expected_columns)
+  })
+  it("expected Captura_incidental_de_ column", {
+    obtained <- effort_2_tidy(datos_prueba_sin_capturas)
+    obtained_columns <- colnames(obtained)
+    expected_columns <- c("ID_de_trampa", "Estado_trampa", "Fecha", "Atrayente", "Nombre_del_responsable", "Captura_incidental_de")
+    expect_true(all(expected_columns %in% obtained_columns))
   })
   it("expected number of rows", {
     obtained <- effort_2_tidy(datos_prueba)
