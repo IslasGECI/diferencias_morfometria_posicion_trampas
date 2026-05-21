@@ -53,4 +53,5 @@ cut_csv_file() {
     input_file_name=${2}
     output_file_name=${3}
     csvcut --columns 1-${number_columns} --delete-empty-rows ${input_file_name} > ${output_file_name}
+    rm --force ${input_file_name}
 }

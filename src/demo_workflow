@@ -48,6 +48,7 @@ mkdir --parents ${errors_directory}
 	# Corre goodtables en la carpeta 'validacion_datapackage'
 	echo "VERIFICACIÓN ESTRUCTURAL"
 	goodtables ${dtp_src}/datapackage.json > ${errors_directory}/errores_estructurales_${position_trap_file_name}.txt
+	rm --force ${position_trap_cutted_data}.csv
 
 # Revisa y compara las capturas de los archivos posición trampas y morfometría gatos
 # 5. Hacerlos tidy (feature/agrega_script_con_cli)
@@ -57,6 +58,7 @@ mkdir --parents ${errors_directory}
 		--output-path ${position_trap_data_file}_tidy.csv \
 	&& cambia_formato_fecha ${position_trap_data_file}_tidy.csv \
 		> ${position_trap_data_file}_ISO8601.csv
+	rm --force ${position_trap_data_file}_tidy.csv
 
 # 6. Limpiar archivos
 # 6.1 Morfometría
@@ -69,6 +71,7 @@ mkdir --parents ${errors_directory}
 	then
 	cambia_formato_fecha ${cat_morphometry_data_file}.csv \
 		> ${cat_morphometry_data_file}_ISO8601.csv
+	rm --force ${cat_morphometry_data_file}.csv
 	else 
 	echo "NO HAY CAPTURAS"
 	echo "🧐 El resultado de esta verificación los podemos ver a detalle en la carpeta \`errores\` que se genera dentro de nuestra carpeta de datos 🗃️"
@@ -80,6 +83,7 @@ mkdir --parents ${errors_directory}
 	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_cleaned_morphometry(gecioptparse::get_options())" \
 	--data_path=${cat_morphometry_data_file}_ISO8601.csv \
 	--output_path=${files_path}/cleaned_morphometry_cats.csv
+	rm --force ${cat_morphometry_data_file}_ISO8601.csv
 
 # 6.2 Posición trampa
 	echo "SELECCIONA CAPTURAS DEL ARCHIVO POSICIÓN TRAMPAS"
@@ -100,9 +104,7 @@ mkdir --parents ${errors_directory}
 		--left_data=${files_path}/cleaned_morphometry_cats.csv \
 		--right_data=${files_path}/cleaned_position_traps.csv \
 		--output_path=${errors_directory}/missing_captures_in_position.csv
-
-	Rscript -e "diferenciasMorfometriaPosicionTrampas::write_morphometry_geci_format(gecioptparse::get_options())" \
-		--data_path ${files_path}/cleaned_morphometry_cats.csv \
-		--output_path ${files_path}/cleaned_morphometry_cats_geci_format.csv
+	
+	rm --force ${files_path}/cleaned_position_traps.csv
 
 	echo "🧐 El resultado de esta verificación los podemos ver a detalle en la carpeta \`errores\` que se genera dentro de nuestra carpeta de datos 🗃️"
