@@ -20,3 +20,12 @@ describe("Que la función pase al formato tidy", {
     expect_message(effort_2_tidy(datos_prueba_sin_capturas), "NO HAY CAPTURAS")
   })
 })
+
+describe("Function that check if columns exist in the data", {
+  it("Column captures is missing", {
+    df <- tibble::tibble(ID = 1:5, Atrayente = "Atrayente 1", Nombre_del_responsable = "Responsable 1")
+    obtained <- check_columns_to_select(df)
+    expected_columns <- c("ID", "Atrayente", "Nombre_del_responsable")
+    expect_equal(colnames(obtained), expected_columns)
+  })
+})
