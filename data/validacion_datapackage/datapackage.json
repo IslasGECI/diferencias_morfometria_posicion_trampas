@@ -58,7 +58,7 @@
                         "name": "Fecha_1", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_1"
@@ -68,7 +68,7 @@
                         "name": "Fecha_2", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_2"
@@ -78,7 +78,7 @@
                         "name": "Fecha_3", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_3"
@@ -88,7 +88,7 @@
                         "name": "Fecha_4", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_4"
@@ -98,7 +98,7 @@
                         "name": "Fecha_5", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_5"
@@ -108,7 +108,7 @@
                         "name": "Fecha_6", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_6"
@@ -118,7 +118,7 @@
                         "name": "Fecha_7", 
                         "format": "default",
                         "constraints": {
-                            "pattern": "(A|D|X)"
+                            "pattern": "(A|D|X|RD|RA|RX)"
                         },
                         "description": "Estado de la trampa (A - Activa, D - Desactiva, X - Captura)",
                         "long_name": "Day_7"
