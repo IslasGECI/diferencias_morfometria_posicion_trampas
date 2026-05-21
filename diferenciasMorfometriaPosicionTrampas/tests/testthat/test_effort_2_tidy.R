@@ -24,13 +24,13 @@ describe("Que la función pase al formato tidy", {
 describe("Function that check if columns exist in the data", {
   it("Column captures is missing", {
     df <- tibble::tibble(ID = 1:5, Atrayente = "Atrayente 1", Nombre_del_responsable = "Responsable 1")
-    obtained <- check_columns_to_select(df)
+    obtained <- get_existing_columns_to_select_in_df(df)
     expected_columns <- c("ID", "Atrayente", "Nombre_del_responsable")
     expect_equal(obtained, expected_columns)
   })
   it("Data with column bycatch captures", {
     df <- tibble::tibble(ID = 1:5, Atrayente = "Atrayente 1", Nombre_del_responsable = "Responsable 1", Captura_incidental_de = "Garza", `2023-01-01` = "D")
-    obtained <- check_columns_to_select(df)
+    obtained <- get_existing_columns_to_select_in_df(df)
     expected_columns <- c("ID", "Atrayente", "Nombre_del_responsable", "Captura_incidental_de")
     expect_equal(obtained, expected_columns)
   })

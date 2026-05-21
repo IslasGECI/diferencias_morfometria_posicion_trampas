@@ -16,7 +16,7 @@ effort_2_tidy <- function(datos_prueba) {
   return(long_format)
 }
 
-check_columns_to_select <- function(df) {
+get_existing_columns_to_select_in_df <- function(df) {
   all_columns_to_select <- c("ID", "Atrayente", "Nombre_del_responsable", "Captura_incidental_de")
   columns_in_df <- colnames(df)
   are_columns_in_df <- all_columns_to_select %in% columns_in_df
