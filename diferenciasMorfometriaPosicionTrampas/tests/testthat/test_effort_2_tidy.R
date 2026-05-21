@@ -32,6 +32,6 @@ describe("Function that check if columns exist in the data", {
     df <- tibble::tibble(ID = 1:5, Atrayente = "Atrayente 1", Nombre_del_responsable = "Responsable 1", Captura_incidental_de = "Garza", `2023-01-01` = "D")
     obtained <- check_columns_to_select(df)
     expected_columns <- c("ID", "Atrayente", "Nombre_del_responsable", "Captura_incidental_de")
-    expect_equal(colnames(obtained), expected_columns)
+    expect_equal(obtained, expected_columns)
   })
 })
