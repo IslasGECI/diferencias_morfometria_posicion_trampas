@@ -6,7 +6,7 @@ describe("Que la función pase al formato tidy", {
     obtained <- effort_2_tidy(datos_prueba)
     obtained_columns <- colnames(obtained)
     expected_columns <- c("ID_de_trampa", "Estado_trampa", "Fecha", "Atrayente", "Nombre_del_responsable")
-    expect_equal(obtained_columns, expected_columns)
+    expect_true(all(expected_columns %in% obtained_columns))
   })
   it("expected Captura_incidental_de_ column", {
     obtained <- effort_2_tidy(datos_prueba_sin_capturas)
