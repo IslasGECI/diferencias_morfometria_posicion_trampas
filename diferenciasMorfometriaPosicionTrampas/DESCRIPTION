@@ -19,7 +19,6 @@ Imports:
 	stringr,
 	tibble,
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
 License: AGPL-3.0-or-later
 Remotes:
 	IslasGECI/gecioptparse,
@@ -29,3 +28,4 @@ Suggests:
 	testtools,
 Type: Package
 Version: 1.4.0
+Config/roxygen2/version: 8.0.0
