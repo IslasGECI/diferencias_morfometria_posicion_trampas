@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- New function `get_existing_columns_to_select_in_df()`. Dynamically detects which of the expected columns (including `Captura_incidental_de`) exist in the input data frame.
+
 ### Fixed
 
 ### Changed
+
+- `effort_2_tidy()` now supports the column `Captura_incidental_de` (bycatch captures). It uses `get_existing_columns_to_select_in_df()` to select only the columns that are present in the data, instead of a hardcoded set.
 
 ### Removed
 
@@ -75,8 +79,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Update recipe `install-r`.
 - Export function `check_columns_name()`.
 
+[Unreleased]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v1.3.0...v1.4.0
+[1.3.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v1.0.1...v1.2.0
 [1.0.1]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.2.0...v1.0.0
+[1.0.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.4.0...v1.0.0
+[0.4.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.1.3...v0.2.0
 [0.1.3]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/IslasGECI/diferencias_morfometrias_posicion_trampas/compare/v0.1.1...v0.1.2
